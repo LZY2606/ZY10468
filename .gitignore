@@ -1,0 +1,63 @@
+syntax: glob
+*.class
+*~
+*.bak
+*.off
+*.old
+*.java.orig
+.DS_Store
+
+# building
+/target
+.mvn/wrapper/maven-wrapper.jar
+
+# plus eclipse crap
+.classpath
+.project
+.settings
+
+# plus IDEA crap
+*.iml
+*.ipr
+.idea
+
+# and projects own things
+*.lck
+
+*~
+
+# --- 依赖与构建产物（不进交付快照）---
+node_modules/
+bower_components/
+.pnp.*
+dist/
+build/
+out/
+target/
+.next/
+.nuxt/
+.svelte-kit/
+.venv/
+venv/
+env/
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+vendor/bundle/
+Pods/
+.gradle/
+.cargo/
+.env
+.env.*
+*.log
+coverage/
+.coverage
+.nyc_output/
+.cache/
+.parcel-cache/
+.vite/
+.turbo/
+*.tsbuildinfo

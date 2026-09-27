@@ -1,0 +1,157 @@
+Here are people who have contributed to JUG development:
+
+Tatu Saloranta, tatu.saloranta@iki.fi: Author
+
+Leonid Kunin: suggested adding 2 constructors (that were missing);
+	needed when storing binary representations of UUIDs
+	(added to v0.9.2)
+    [0.9.2]
+
+Paul Blankenbaker: provided the native code for accessing Ethernet
+	MAC-addresses (on linux/x86, Solaris/sparc, Windows); first
+	included in 1.0.0 release.
+    [1.0.0]
+
+Gernot Koller: pointed out a bug in UUID.toByteArray() method; was
+	not using offset (fixed in 1.0.1)
+    [1.0.1]
+
+Dominique Jean-Prost: Suggested that there should be alternate method
+    	of loading native libs (implemented in 1.0.2).
+	Also pointed out that method 'setLibDir' should be public, not
+     	protected (fixed in 1.0.2).
+    [1.0.2]
+
+Jeff Woodward: Pointed and fixed a bug in UUID.toByteArray() method
+   (not sure if Gernot's fix was somehow overwritten in codebase
+   or what...).
+  [1.0.3]
+
+D.J Hagberg: Submitted native code to use with Mac OS X, to use for
+   accessing MAC address of primary network interface (code should
+   also work with *BSDs?).
+   Also contributed improvements to Ant's build.xml.
+   [1.0.3]
+
+G�ran L�wkrantz: Submitted native code for FreeBSD/x86
+  [1.1]
+
+Eric Bie: Wrote full unit test suite, using JUnit! Really REALLY
+   useful addition (old ad hoc tests needed replacement).
+   Also cleaned up ant build file significantly.
+  [1.1]
+
+Bill Sarra: Pointed out and fix Windows native code bug that would
+   under some circumstances cause infinite looping when trying to
+   access MAC addresses of all interfaces.
+  [1.1]
+
+Ralf S. Engelschall: Pointed out and fixed a bug in generating
+  dummy broadcast ethernet addresses; interpretation of LSB/MSB
+  was incorrect with respect to ethernet broadcast & structs.
+  [1.1] 
+ 
+Wolfgang Hoschek: Suggested useful improvement to random UUIDs;
+  there's no requirement for API to enforce use of SecureRandom.
+  Thus, code now only expects Random, although still creates
+  SecureRandom if no explicit generator is passed. This can help
+  in reducing startup time of generator, as well as max. rate
+  of UUID generation, depending on how quickly Random instance
+  can be initialized & generates new numbers.
+
+Jonas F�gedi: Contributed the patch to check for FreeBSD platform
+  (which actually was part of an earlier patch that I somehow had
+   managed not to get in... :-/ )
+  [1.1.1]
+
+David Pawson: Pointed out that the jar file was missing the necessary
+  Main-Class definition, which prevented it from being invoked from
+  command line using -jar switch.
+  [1.1.2]
+
+Pekka Enberg: Pointed out a bug in Linux JNI code; the socket was not
+  properly closed
+  [2.0.0]
+
+Thomas Wernitz: Pointed out a problem with MacOS JNI code; wasn't
+  properly looping through the interfaces
+  [2.0.0]
+
+Asher Glynn: Suggested usefulness of external file-based synchronization,
+  to ensure that system clock moving backwards during reboot does not
+  compromise uniqueness of produced UUIDs (which is obviously also mentioned
+  in UUID specs, but previously not implemented in Jug).
+  [2.0.0]
+
+Wim Deblauwe: Pointed out problems with 2.0rc3 jars (missing
+  com.ccg.net.ethernet package, no downloadable JNI code).
+  [2.0rc3]
+
+Klaus Rheinwald: Contributed non-netbios Windows JNI code for accessing
+  Ethernet addresses
+  [2.0rc5]
+
+Fran�ois Berenger:
+  Pointed out a method signature problem that prevent unit test compilation
+  [2.1]
+
+Tarusawa Hiroyuki:
+  Reported missing Maven(2) jars for JUG.
+
+Ed Anuff:
+  Reported Issue #7: Bytes of clock sequence were switched (unlikely to cause
+  problems, but incorrect -- regression from 2.x)
+  [3.1.3]
+
+Felix W. Dekker (FWDekker@github)
+  Contributed #36: Add customisable clock to UUIDTimer
+  [3.3.0]
+
+Andre Brait (andrebrait@github)
+  Contributed #32: Use SLF4J instead of Log4J directly
+  [4.0]
+
+Pascal Schumacher (PascalSchumacher@github)
+  * Reported #37: Problematic OSGI version range for slf4j dependency
+  [4.0.1]
+
+Hal Hildebrand (Hellblazer@github)
+  * Contributed #41: Add support for Proposed type v6 (reordered timestamp)
+  [4.1.0]
+  * Contributed #46: Add support for Proposed type v7 (epoch-based time uuid)
+  [4.1.0]
+  * Contributed fix fox #69: UUID version 7 implementation sorting incorrect?
+  [4.1.1]
+
+Dirk-Jan Rutten (excitement-engineer@github)
+  * Reported #69: UUID version 7 implementation sorting incorrect?
+  [4.1.1]
+
+Paul Galbraith (pgalbraith@github)
+  * Contributed #73: Add `Generators.defaultTimeBasedGenerator()` to use "default"
+    interface  address for time/based UUIDs
+  [4.2.0]
+
+Pavel Raev (magdel@github)
+  * Contributed  #81: Add UUIDUtil.extractTimestamp() for extracting 64-bit
+    timestamp for all timestamp-based versions
+   [5.0.0]
+  * Contributed #94 Add alternate version to UUIDv7 generator that uses random
+    values on every call (not just for different timestamp)
+   [5.0.0]
+
+Maia Everett (Maia-Everett@github)
+  * Contributed #85: Fix `LazyRandom` for native code generation tools
+   [5.0.0]
+
+Daniel Albuquerque (worldtiki@github)
+  * Contributed #99: New factory method to create TimeBasedEpochRandomGenerator
+   [5.1.0]
+
+Alexander Ilinykh (divinenickname@github)
+  * Contributed improvements to README.md, pom.xml (OSGi inclusion)
+   [5.1.1]
+
+Chad Parry (chadparry@github)
+  * Contributed #124: TimeBasedEpochGenerator should prevent overflow
+   [5.3.0]

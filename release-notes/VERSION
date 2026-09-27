@@ -1,0 +1,229 @@
+Project: java-uuid-generator
+
+============================================================================
+Releases
+============================================================================
+
+5.2.0 (05-Dec-2025)
+
+#124: TimeBasedEpochGenerator should prevent overflow
+ (Chad P)
+#139: Upgrade tests from JUnit 4 to JUnit 5
+- Update to `oss-parent` v69
+
+5.1.1 (26-Sep-2025)
+
+#122: RFC-4122 Obsoleted by RFC-9562 (document change)
+ (pointed out by @akefirad)
+- Update to `oss-parent` v68 to switch to Central Portal publishing
+- Branch "master" renamed as "main"
+
+5.1.0 (02-Jun-2024)
+
+#99: New factory method to create TimeBasedEpochRandomGenerator
+ (contributed by Daniel A)
+#105: `UUIDUtil.extractTimestamp()` is broken for versions 1 and 6
+ (contributed by @magdel)
+
+5.0.0 (23-Feb-2024)
+
+#53: Increase JDK baseline to JDK 8
+#81: Add `UUIDUtil.extractTimestamp()` for extracting 64-bit timestamp for
+  all timestamp-based versions
+ (requested by @gabrielbalan)
+ (contributed by @magdel)
+#85: Fix `LazyRandom` for native code generation tools
+ (contributed by @Maia-Everett)
+#94: Add alternate version to UUIDv7 generator that uses random values on every
+  call (not just for different timestamp)
+ (contributed by @magdel)
+
+4.3.0 (12-Sep-2023)
+
+#78: TimeBasedEpochGenerator (UUIDv7) can't be provided a `UUIDClock`
+ (reported by @Frozenlock)
+#84: Add `construct()` methods to specify the milliseconds being used
+  for time-based UUID generation
+ (contributed by @BranchPredictor)
+
+4.2.0 (14-May-2023)
+
+#73: Add `Generators.defaultTimeBasedGenerator()` to use "default" interface
+  address for time/based UUIDs
+ (contributed by Paul G)
+
+4.1.1 (01-May-2023)
+
+#67: Ensure correct distinction between variant and version in documentation
+ (requested by @mindloaf)
+ (contributed by @mukham12)
+#69: UUID version 7 implementation sorting incorrect?
+ (reported by Dirk-Jan R)
+ (fix contributed by Hal H)
+
+4.1.0 (07-Jan-2023)
+
+#41: Add support for Proposed type v6 (reordered timestamp)
+ (contributed by Hal H)
+#46: Add support for Proposed type v7 (epoch-based time uuid)
+ (contributed by Hal H)
+#55: Add `Main-Class` manifest to make jar invoke `Jug` class
+#57: Add constants for "Nil UUID", "Max UUID" (from draft "new UUID" spec) in `UUIDUtil`
+#65: Enable "Reproducible Build"
+- Fix a minor issue with argument validation for `Jug` tool class
+- Update junit dependency (via oss-parent:41)
+- Update slf4j-api to 1.7.36
+
+4.0.1 (03-Mar-2020)
+
+#37: Problematic OSGI version range for slf4j dependency
+ (reported by Pascal S)
+
+4.0 (22-Feb-2020)
+
+#32: Use SLF4J instead of Log4J directly
+ (implemented by Andre B)
+
+3.3.0 (07-Feb-2020)
+
+#36: Add customisable clock to UUIDTimer
+ (contributed by Felix W-D)
+
+3.2.0 (22-Mar-2019)
+
+#29: Add simple module-info for JDK9+, using Moditect
+
+3.1.5 (21-Feb-2018)
+
+#19: LICENSE file refers to the Java Classmate library instead of Java UUID Generator (JUG)
+ (reported by Roger Aird, rogeraird@github)
+#22: UUIDTimer is not extendable which is not consistent with it's Javadoc
+ (reported by Spikhalskiy@github, mazurkin@github)
+
+3.1.4 (15-Dec-2014)
+
+#4: Add LICENSE file in resulting jar.
+#15: Please make log4j "provided" rather than compile if it's really optionally
+ (requested by ymenager@github)
+
+3.1.3 (04-Nov-2011)
+
+* [#3] Make sure UUIDUtil has convenience factory methods, conversions,
+  to make it easier to work with java.util.UUID.
+* [#7] Bytes of clock sequence were switched (unlikely to cause problems,
+  but incorrect -- regressions from 2.x)
+  (reported by Ed A)
+* [#8] A potential race condition for RandomBasedGenerator
+  (reported by "facboy")
+
+3.1.2 (25-Jun-2011):
+
+* Fixed a packaging problem (missing sources)
+
+3.1.1 (05-Apr-2011):
+
+* [#5]: NPE when calling "Generators.randomBasedGenerator().generate()" second time
+  (reported by oswaldo)
+
+3.1.0 (14-Oct-2010):
+
+Rewrite of Java Uuid Generator, to bring it up to date. Changes include:
+
+* Use Maven for build
+* Jars built as OSGi bundles with appropriate metadata
+* Converted to use java.util.UUID as the UUID value type
+* Change from using static UUIDGenerator into typed generator instances
+  accessed via com.fasterxml.uuid.Generators factory class
+* Allow using JDK 1.6 Ethernet address access code (exposed via
+  EthernetAddress class)
+* Made generators fully synchronized
+
+2.0.0 (29-Oct-2005):
+
+The official 2.0 release. No functional changes since rc6, just
+documentation updates.
+
+2.0-rc6: (25-Sep-2005):
+
+Added simple logger wrappers for log4j and java.util.logging: now it
+should be trivial to make JUG use either of these logging sub-systems,
+when integrating it to an existing system.
+
+  2.0-rc5: (05-Sep-2005):
+
+  Integrated non-NetBIOS-based JNI Windows code, contributed by Klaus R.
+  Also, improved src/c/makefile a bit, which lead to name change of the
+  JNI libraries (due to my inexperience with make files, had to make some
+  system-dependant parts lower-case).
+
+  2.0-rc4: (16-Aug-2005),
+  2.0-rc3: (09-Aug-2005)
+    Cleanup; integrating last minor fixes to JNI code, compiled macos and linux
+    modules, added missing classes to jar.
+
+  2.0-rc2:
+    New functionality:
+    - Simple configurable logging sub-system
+    - External synchronization for time-stamp persistence, as well as
+      file-locking based multi-JVM-safe locking. Can prevent running
+      Jug from multiple JVMs, as well as all are configured to properly
+      use shared locking file(s).
+
+  2.0-rc1:
+    Changes:
+     - Renamed package 'org.doomdark.uuid' to 'org.safehaus.uuid' as part of
+       the transition to become one of official Safehaus projects (at
+       http://jug.safehaus.org).
+    Fixes:
+     - JNI fix on Linux code: now properly frees socket data structure on
+       all use cases
+     - Fix to MacOsX (and thus BSD) code: will not get into infinite loop
+       when trying to access multiple interfaces.
+
+  1.1.2: Minor fix:
+     - Added Main-Class definition to jar manifest, to allow normal invocation
+       (of Jug command-line functionality) from jar.
+
+  1.1.1: Minor fixes:
+     - Added FreeBSD recognition check suggested by Jonas F�gedi.
+
+  1.1: Better native support, full unit test suite.
+     - Fixed a bug in Windows MAC address access, which would cause
+       infinite loop under some conditions on Win9x/2K/XP.
+     - Added FreeBSD/x86 native code.
+     - Added full unit test suite.
+     - Fixed a bug in dummy ethernet broadcast generation code.
+     - Changed API to allow using any Random implementation, not just
+       SecureRandom or its subclasses.
+
+  1.0.3: Better native support, a minor bugfix.
+     - Bug fix to UUID.java class (another bug in toByteArray(),
+       or potentially regressed first one?)
+     - Mac OS X native MAC address access support (for primary
+       interface)
+     - Small improvements Ant build definitions (need to include targets
+       for doing JavaDocs and source distribution
+     - Added BUGS file that contains known problems.
+
+  1.0.2: Minor updates:
+     - Native code can now be loaded either from application specific
+       location (default case, supported since 1.0.0), or from
+	   system-dependant standard lib location (new to 1.0.2)
+     - Trying to add ant build support to replace make. Not yet
+	   fully done.
+
+  1.0.1: Minor fixes:
+	- UUID.java class (bug in toByteArray() fixed)
+	- Updated README file to contain reference to a new IETF draft:
+
+	  http://www.ietf.org/internet-drafts/draft-mealling-uuid-urn-00.txt
+
+	  which describes UUIDs as well as presents a suggested way for
+	  'encapsulating' UUIDs in a URN name space.
+
+  1.0.0: Added native modules for obtaining Ethernet MAC address (see
+	CREDITS for details about source of these sources)
+
+-----
+Note: release notes for versions prior to 1.0 removed; refer to version 1.1.2
+for those versions for details.
